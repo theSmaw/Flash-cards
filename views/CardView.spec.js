@@ -1,5 +1,5 @@
 define([
-    'libs/isolate-coffee.js!views/CardView.js'
+    'libs/isolate.js!views/CardView.js'
 ], function (CardView) {
     
     describe('CardView', function () {
