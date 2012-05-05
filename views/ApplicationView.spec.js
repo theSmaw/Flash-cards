@@ -1,5 +1,5 @@
 define([
-    'libs/isolate!views/ApplicationView.js'
+    'libs/isolate-coffee!views/ApplicationView.js'
 ], function (ApplicationView) {
     
     beforeEach(function () {
