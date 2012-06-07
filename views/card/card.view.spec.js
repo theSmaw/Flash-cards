@@ -1,11 +1,28 @@
-define([
-    'libs/isolate.js!views/CardView.js'
+require([
+    'libs/isolate!views/card/card.view.js'
 ], function (CardView) {
     
     describe('CardView', function () {
         
         beforeEach(function () {
-            CardView.dependencies['libs/text!templates/CardTemplate.html'] = '<h2><%= word %></h2><img src="<%= url %>" />;'
+            CardView.dependencies['views/word/word.view.js'].prototype = {
+                
+                render : function () {
+                    
+                    return {
+                        el : document.createElement('h2')
+                    };
+                }    
+            };
+            CardView.dependencies['views/image/image.view.js'].prototype = {
+                
+                render : function () {
+                    
+                    return {
+                        el : document.createElement('img')
+                    };
+                }    
+            };
             this.Card = Backbone.Model.extend({
                 defaults : {
                     url : 'http://card/view/spec',
@@ -13,7 +30,7 @@ define([
                 }
             });
         });
-    
+   
         describe('CardView.initialize', function () {
 
             it('should be a method', function () {
@@ -22,7 +39,7 @@ define([
                 expect(typeof(cardView.initialize)).toBe('function');
             });
         });
-        
+         
         describe('CardView.render', function () {
             
             it('should be a method', function() {
@@ -59,7 +76,7 @@ define([
                     }),
                     renderedView = cardView.render();
                
-                expect(renderedView.$el.html()).toBe('<h2>CardViewSpec</h2><img src="http://card/view/spec">');
+                expect(renderedView.$el.html()).toBe('<h2></h2><img>');
             });
         });
     });

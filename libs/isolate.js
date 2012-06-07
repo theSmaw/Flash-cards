@@ -168,10 +168,14 @@ define([],function(){
         for(var modName in mainCtx.defined){
           if(modName == name) continue;
           isolatedCtx.defined[modName] = mockModule(modName, mainCtx.defined[modName], config);
-          isolatedCtx.loaded[modName] = true;
+          try {
+            isolatedCtx.loaded[modName] = true;
+          } catch (e) {}
         }
         delete isolatedCtx.defined[name];
-        delete isolatedCtx.loaded[name];
+        try {
+          delete isolatedCtx.loaded[name];
+          } catch (e) {}
 
         isolatedRequire([name], function(isolatedModule){
           if( config.dependenciesKey ) {

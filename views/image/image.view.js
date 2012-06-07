@@ -1,25 +1,24 @@
 define([
-    'libs/text!templates/CardTemplate.html'
-], function (CardTemplate) {
-    var CardView = Backbone.View.extend({
-    
+    'libs/text!templates/image/image.template.html'
+], function (ImageTemplate) {
+    var ImageView = Backbone.View.extend({
+        
             initialize : function () {
                 _.bindAll(this, 'render');
             },
-    
+        
             render : function () {
-                var template = _.template(CardTemplate);
+                var template = _.template(ImageTemplate);
                 
                 this.$el.html(template({
-                    word : this.model.get('word'),
                     url : this.model.get('url')
                 }));
            
                 return this;
             },
-    
-            tagName : 'li'
+            
+            tagName : 'div'
         });
     
-    return CardView;
+    return ImageView;
 });

@@ -1,5 +1,5 @@
 define([
-    'models/Card.js'
+    'models/card/card.model.js'
 ], function (Card) {
     var Cards = Backbone.Collection.extend({
             model : Card,

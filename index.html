@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" type="text/css" media="all" href="global.css" />
     <title>Flash cards</title>
 </head>
 <html>
     <body>
-        <h1>Flash cards!</h1>
         <div id="app"></div>
         <script src="libs/$.js"></script>
         <script src="libs/_.js"></script>
         <script src="libs/Backbone.js"></script>
         <script src="libs/require.js"></script>
-        <!--<script src="models/Card.js"></script>
-        <script src="collections/Cards.js"></script>
-        <script src="views/CardView.js"></script>
-        <script src="views/ApplicationView.js"></script> -->
         <script>
-            require(['views/ApplicationView.js'], function (ApplicationView) {
-                var applicationView = new ApplicationView();
+            require(['main.js'], function (Main) {
+                var main = new Main();
                 
             });
         </script>
