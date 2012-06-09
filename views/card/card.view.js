@@ -19,6 +19,8 @@ define([
                 
                 this.$el.append(wordView.render().el);
             },
+            
+            el : '<li class="card"></li>',
     
             initialize : function () {
                 _.bindAll(this);
@@ -29,9 +31,7 @@ define([
                 this.appendImage();
            
                 return this;
-            },
-    
-            tagName : 'li'
+            }
         });
     
     return CardView;
