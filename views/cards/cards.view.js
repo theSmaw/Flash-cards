@@ -4,11 +4,15 @@ define([
 ], function (CardsCollection, CardView) {
     var CardsView = Backbone.View.extend({
 
+        addCard : function (model) {
+            this.addCardToPage(model);
+            this.createCardRoute(model);
+        },
+
         addCards : function () {
 
             _(this.cards.models).each(_.bind(function (model) {
-                this.addCardToPage(model);
-                this.createCardRoute(model);
+                this.addCard(model);
             }, this));
         },
 
