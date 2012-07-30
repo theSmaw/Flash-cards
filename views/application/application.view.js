@@ -7,12 +7,12 @@ define([
 
         initialize : function () {
             _.bindAll(this);
-            this.render();
+            this.cardsView = new CardsView();
+            this.cards.bind('reset', this.render);
         },
 
         render : function () {
-            this.cardsView = new CardsView();
-            this.$el.append(this.cardsView.render().el);
+            this.$el.html(this.cardsView.render().el);
         }
     });
 

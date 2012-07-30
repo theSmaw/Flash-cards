@@ -1,5 +1,5 @@
 body {
-    background: #eeeeee;
+    background: #fff;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -27,4 +27,113 @@ html {
     display: none;
     height: 100%;
     width: 100%;
+}
+
+
+
+
+<style>
+#circleG{
+    width:149.33333333333334px;
+}
+
+.circleG{
+    background-color:#FFFFFF;
+    float:left;
+    height:32px;
+    margin-left:17px;
+    width:32px;
+    -webkit-animation-name:bounce_circleG;
+    -webkit-border-radius:21px;
+    -webkit-animation-duration:1.6500000000000001s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-direction:linear;
+    -moz-animation-name:bounce_circleG;
+    -moz-border-radius:21px;
+    -moz-animation-duration:1.6500000000000001s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-direction:linear;
+    opacity:0.3;
+    -o-animation-name:bounce_circleG;
+    border-radius:21px;
+    -o-animation-duration:1.6500000000000001s;
+    -o-animation-iteration-count:infinite;
+    -o-animation-direction:linear;
+    -ms-animation-name:bounce_circleG;
+    -ms-animation-duration:1.6500000000000001s;
+    -ms-animation-iteration-count:infinite;
+    -ms-animation-direction:linear;
+    opacity:0.3}
+
+#circleG_1{
+    -webkit-animation-delay:0.33000000000000007s;
+    -moz-animation-delay:0.33000000000000007s;
+    -o-animation-delay:0.33000000000000007s;
+    -ms-animation-delay:0.33000000000000007s;
+}
+
+#circleG_2{
+    -webkit-animation-delay:0.7700000000000001s;
+    -moz-animation-delay:0.7700000000000001s;
+    -o-animation-delay:0.7700000000000001s;
+    -ms-animation-delay:0.7700000000000001s;
+}
+
+#circleG_3{
+    -webkit-animation-delay:0.9900000000000001s;
+    -moz-animation-delay:0.9900000000000001s;
+    -o-animation-delay:0.9900000000000001s;
+    -ms-animation-delay:0.9900000000000001s;
+}
+
+@-webkit-keyframes bounce_circleG{
+0%{
+opacity:0.3}
+
+50%{
+opacity:1;
+background-color:#feec52}
+
+100%{
+opacity:0.3}
+
+}
+
+@-moz-keyframes bounce_circleG{
+0%{
+opacity:0.3}
+
+50%{
+opacity:1;
+background-color:#feec52}
+
+100%{
+opacity:0.3}
+
+}
+
+@-o-keyframes bounce_circleG{
+0%{
+opacity:0.3}
+
+50%{
+opacity:1;
+background-color:#feec52}
+
+100%{
+opacity:0.3}
+
+}
+
+@-ms-keyframes bounce_circleG{
+0%{
+opacity:0.3}
+
+50%{
+opacity:1;
+background-color:#feec52}
+
+100%{
+opacity:0.3}
+
 }
