@@ -80,10 +80,8 @@ define([
                 spyOn(cardsView.cardViews['word01'], 'show');
                 cardsView.routerData['word01']();
                 expect(cardsView.cardViews['word01'].show).toHaveBeenCalled();
-                expect(cardsView.cardViews['word01'].show).toHaveBeenCalledWith('word01');
                 cardsView.routerData['word02']();
                 expect(cardsView.cardViews['word01'].show).toHaveBeenCalled();
-                expect(cardsView.cardViews['word01'].show).toHaveBeenCalledWith('word02');
             });
         });
 
@@ -102,7 +100,7 @@ define([
             });
 
             it('should add a card view', function () {
-                cardsView.$el = $('<ul></ul>')
+                cardsView.$el = $('<ul></ul>');
                 cardsView.addCardToPage({
 
                     get : function (property) {
