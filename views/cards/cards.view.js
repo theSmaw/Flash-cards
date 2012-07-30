@@ -49,7 +49,6 @@ define([
         firstCard : true,
 
         getCards : function () {
-            this.cards = new CardsCollection();
             this.cards.bind('reset', _.bind(this.start, this));
             this.cards.fetch();
         },
@@ -57,6 +56,7 @@ define([
         initialize : function () {
             _.bindAll(this);
             this.firstCard = true;
+            this.cards = new CardsCollection();
             this.getCards();
         },
 

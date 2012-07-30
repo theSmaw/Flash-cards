@@ -8,7 +8,7 @@ define([
         initialize : function () {
             _.bindAll(this);
             this.cardsView = new CardsView();
-            this.cards.bind('reset', this.render);
+            this.cardsView.cards.bind('reset', this.render);
         },
 
         render : function () {
