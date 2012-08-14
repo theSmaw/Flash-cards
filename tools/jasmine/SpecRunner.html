@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Jasmine Spec Runner</title>
+        <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.1.0/jasmine_favicon.png">
+        <link rel="stylesheet" type="text/css" href="lib/jasmine-1.1.0/jasmine.css">
+        <script type="text/javascript" src="lib/jasmine-1.1.0/jasmine.js"></script>
+        <script type="text/javascript" src="lib/jasmine-1.1.0/jasmine-html.js"></script>
+
+        <!-- include source files here... -->
+        <script src="../../public/js/libs/$.js"></script>
+        <script src="../../public/js/libs/_.js"></script>
+        <script src="../../public/js/libs/Backbone.js"></script>
+        <script src="../../public/js/libs/require.js"></script>
+        <script type="text/javascript">
+            $('document').ready(function () {
+                require([
+
+                    // test files here
+                    '../../public/js/main.spec.js',
+                    '../views/application/application.view.spec.js',
+                    'views/card/card.view.spec.js',
+                    'views/cards/cards.view.spec.js',
+                    'views/image/image.view.spec.js',
+                    'views/word/word.view.spec.js'
+                ], function () {
+                    var jasmineEnv = jasmine.getEnv();
+
+                    jasmineEnv.updateInterval = 1000;
+
+                    var htmlReporter = new jasmine.HtmlReporter();
+
+                    jasmineEnv.addReporter(htmlReporter);
+
+                    jasmineEnv.specFilter = function(spec) {
+
+                        return htmlReporter.specFilter(spec);
+                    };
+
+                    jasmineEnv.execute();
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

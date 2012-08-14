@@ -12,7 +12,7 @@ Database.prototype.findCards = function () {
         if (err || !cards) {
             console.log(err);
         } else {
-            
+
             cards.forEach(function (card) {
                 console.log(card);
             });
@@ -41,13 +41,16 @@ var Card = mongoose.model('card', new mongoose.Schema({
     word : String,
     url : String
 }));
-
+console.log(application_root);
 app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(express.static(path.join(application_root, 'public')));
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+    app.use(express.errorHandler({
+        dumpExceptions : true,
+        showStack : true
+    }));
 });
 
 app.use(express.static(__dirname + '/'));
@@ -59,22 +62,22 @@ app.get('/card', function(req, res){
 });
 
 app.get('/api/cards', function(req, res){
-  
+
     return Card.find({}, null, {
         sort : {
             'word' : 1
         }
     }, function(err, cards) {
-  
+
         return res.send(cards);
     });
 });
 
 app.get('/api/cards/:word', function(req, res){
-  
+
     return Card.findByWord(req.params.word, function(err, card) {
         if (!err) {
-        
+
             return res.send(card);
         }
     });
