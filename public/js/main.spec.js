@@ -1,9 +1,9 @@
 define([
-    'libs/isolate!main.js'
+    'libs/isolate!main'
 ], function (Main) {
 
     beforeEach(function () {
-        Main.dependencies['views/application/application.view.js'].prototype = {
+        Main.dependencies['views/application/application.view'].prototype = {
 
             addCardToPage : function () {},
 

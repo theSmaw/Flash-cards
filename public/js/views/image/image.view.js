@@ -1,6 +1,4 @@
-define([
-    'js/libs/text!../../templates/image/image.template.html'
-], function (ImageTemplate) {
+define(function () {
     var ImageView = Backbone.View.extend({
 
             initialize : function () {
@@ -8,7 +6,7 @@ define([
             },
 
             render : function () {
-                var template = _.template(ImageTemplate);
+                var template = _.template('<img src="<%= url %>" />');
 
                 this.$el.html(template({
                     url : this.model.get('url')

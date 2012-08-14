@@ -1,6 +1,6 @@
 define([
-    '../image/image.view.js',
-    '../word/word.view.js'
+    'views/image/image.view',
+    'views/word/word.view'
 ], function (ImageView, WordView) {
     var CardView = Backbone.View.extend({
 

@@ -1,11 +1,10 @@
 define([
-    'libs/isolate!image.view.js'
+    'libs/isolate!views/image/image.view'
 ], function (ImageView) {
 
     describe('ImageView', function () {
 
         beforeEach(function () {
-            ImageView.dependencies['libs/text!templates/image/image.template.html'] = '<img src="<%= url %>" />'
             this.Card = Backbone.Model.extend({
                 defaults : {
                     url : 'http://image/view/spec',

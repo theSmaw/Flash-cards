@@ -1,6 +1,6 @@
 define([
-    '../../collections/cards/cards.collection.js',
-    '../card/card.view.js'
+    'collections/cards/cards.collection',
+    'views/card/card.view'
 ], function (CardsCollection, CardView) {
     var CardsView = Backbone.View.extend({
 

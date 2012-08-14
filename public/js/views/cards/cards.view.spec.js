@@ -1,10 +1,10 @@
 define([
-    'libs/isolate!cards.view.js'
+    'libs/isolate!views/cards/cards.view'
 ], function (CardsView) {
     var cardsView;
 
     function before() {
-        CardsView.dependencies['collections/cards/cards.collection.js'].prototype = {
+        CardsView.dependencies['collections/cards/cards.collection'].prototype = {
 
             bind : function () {},
 
@@ -26,7 +26,7 @@ define([
                 }];
             }
         };
-        CardsView.dependencies['views/card/card.view.js'].prototype = {
+        CardsView.dependencies['views/card/card.view'].prototype = {
 
             render : function () {
 

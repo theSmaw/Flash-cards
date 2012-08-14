@@ -1,6 +1,4 @@
-define([
-    'js/libs/text!../../templates/word/word.template.html'
-], function (WordTemplate) {
+define(function () {
     var WordView = Backbone.View.extend({
 
             initialize : function () {
@@ -8,7 +6,7 @@ define([
             },
 
             render : function () {
-                var template = _.template(WordTemplate);
+                var template = _.template('<h2><%= word %></h2>');
 
                 this.$el.html(template({
                     word : this.model.get('word')

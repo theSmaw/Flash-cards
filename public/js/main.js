@@ -1,5 +1,5 @@
 define([
-    './views/application/application.view.js'
+    'views/application/application.view'
 ], function (ApplicationView) {
 
     function Main() {

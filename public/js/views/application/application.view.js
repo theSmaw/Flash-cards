@@ -1,5 +1,5 @@
 define([
-    '../cards/cards.view.js'
+    'views/cards/cards.view'
 ], function (CardsView) {
     var ApplicationView = Backbone.View.extend({
 

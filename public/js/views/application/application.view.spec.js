@@ -1,10 +1,10 @@
 define([
-    'libs/isolate!application.view.js'
+    'libs/isolate!views/application/application.view'
 ], function (ApplicationView) {
     var applicationView;
 
     function before() {
-        ApplicationView.dependencies['views/cards/cards.view.js'].prototype = {
+        ApplicationView.dependencies['views/cards/cards.view'].prototype = {
 
             addCardToPage : function () {},
 

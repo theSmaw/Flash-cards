@@ -1,11 +1,11 @@
 require([
-    'libs/isolate!card.view.js'
+    'libs/isolate!views/card/card.view'
 ], function (CardView) {
 
     describe('CardView', function () {
 
         beforeEach(function () {
-            CardView.dependencies['views/word/word.view.js'].prototype = {
+            CardView.dependencies['views/word/word.view'].prototype = {
 
                 render : function () {
 
@@ -14,7 +14,7 @@ require([
                     };
                 }
             };
-            CardView.dependencies['views/image/image.view.js'].prototype = {
+            CardView.dependencies['views/image/image.view'].prototype = {
 
                 render : function () {
 

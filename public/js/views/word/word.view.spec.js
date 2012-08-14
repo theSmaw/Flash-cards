@@ -1,11 +1,10 @@
 require([
-    'libs/isolate!word.view.js'
+    'libs/isolate!views/word/word.view'
 ], function (WordView) {
 
     describe('WordView', function () {
 
         beforeEach(function () {
-            WordView.dependencies['libs/text!templates/word/word.template.html'] = '<img src="<%= url %>" />'
             this.Card = Backbone.Model.extend({
                 defaults : {
                     url : 'http://word/view/spec',

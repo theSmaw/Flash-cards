@@ -19,11 +19,11 @@
         <script src="js/libs/require.js"></script>
         <script>
             require.config({
-            //    baseUrl: "/js"
+                baseUrl: "js"
             });
         </script>
         <script>
-            require(['js/main.js'], function (Main) {
+            require(['main'], function (Main) {
                 var main = new Main();
 
             });
