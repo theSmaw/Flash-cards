@@ -1,7 +1,7 @@
 /*function Database(url, collections) {
     this.url = url;// "username:password@example.com/mydb"
     this.collections = collections;
-}
+}//
 
 Database.prototype.connect = function () {
     this.database = require('mongojs').connect(this.url, this.collections);
