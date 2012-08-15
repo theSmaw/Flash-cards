@@ -26,6 +26,21 @@ database.connect();
 database.findCards();
 */
 
+/*
+db.cards.save({
+    word : 'tree',
+    url : 'http://farm7.staticflickr.com/6016/5949819558_47a5117548_b.jpg'
+})
+db.cards.save({
+ word : 'house',
+ url : 'http://farm5.staticflickr.com/4154/5007151269_3aea1aea24_z.jpg'
+ })
+ db.cards.save({
+ word : 'flower',
+ url : 'http://farm9.staticflickr.com/8424/7787351250_03c4ed4ecc_b.jpg'
+ })
+ */
+
 
 
 var application_root = __dirname,
@@ -62,6 +77,7 @@ app.get('/card', function(req, res){
 });
 
 app.get('/api/cards', function(req, res){
+   console.log('get cards');
 
     return Card.find({}, null, {
         sort : {

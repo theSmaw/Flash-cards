@@ -29,6 +29,7 @@ define([
             render : function () {
                 this.appendWord();
                 this.appendImage();
+                this.$el.css('display', 'block');
 
                 return this;
             }
