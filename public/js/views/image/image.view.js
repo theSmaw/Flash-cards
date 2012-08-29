@@ -3,6 +3,7 @@ define(function () {
 
             initialize : function () {
                 _.bindAll(this, 'render');
+                this.render();
             },
 
             render : function () {

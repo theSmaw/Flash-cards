@@ -17,15 +17,13 @@ define([
         },
 
         addCardToPage : function(cardModel) {
-            var cardHtml,
-                cardView;
+            var cardView;
 
             cardView = new CardView({
                 model : cardModel
             });
-            cardHtml = cardView.render().el;
             this.cardViews[cardModel.get('word')] = cardView;
-            this.$el.append(cardHtml);
+            this.$el.append(cardView.el);
         },
 
         cardViews : {},

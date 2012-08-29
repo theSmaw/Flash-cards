@@ -6,6 +6,10 @@ body {
     width: 100%;
 }
 
+h2 {
+    margin: 0;
+}
+
 html {
     height: 100%;
     width: 100%;
@@ -24,7 +28,23 @@ html {
 }
 
 #cards .card {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#cards .card div {
     display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#cards .card div img {
     height: 100%;
     width: 100%;
 }

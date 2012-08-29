@@ -5,33 +5,54 @@ define([
     var CardView = Backbone.View.extend({
 
             appendImage : function () {
-                var imageView = new ImageView({
+                this.imageView = new ImageView({
                     model : this.model
                 });
-
-                this.$el.append(imageView.render().el);
+                this.$el.append(this.imageView.el);
             },
 
             appendWord : function () {
-                var wordView = new WordView({
+                this.wordView = new WordView({
                     model : this.model
                 });
-
-                this.$el.append(wordView.render().el);
+                this.$el.append(this.wordView.el);
             },
 
             el : '<li class="card"></li>',
 
+            events : {
+                'wordClicked' : 'showImage'
+            },
+
+            hide : function () {
+                this.$el.css({
+                    zIndex : 1
+                });
+            },
+
             initialize : function () {
                 _.bindAll(this);
+                this.render();
             },
 
             render : function () {
                 this.appendWord();
                 this.appendImage();
-                this.$el.css('display', 'block');
 
                 return this;
+            },
+
+            show : function () {
+                this.wordView.show();
+                this.$el.css({
+                    zIndex : 2
+                });
+            },
+
+            showImage : function () {
+                console.log('si');
+                this.wordView.hide();
+                this.imageView.show();
             }
         });
 
