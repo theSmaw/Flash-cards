@@ -1,6 +1,12 @@
 define(function () {
     var ImageView = Backbone.View.extend({
 
+            hide : function () {
+                this.$el.css({
+                    display : 'none'
+                });
+            },
+
             initialize : function () {
                 _.bindAll(this, 'render');
                 this.render();
@@ -14,6 +20,12 @@ define(function () {
                 }));
 
                 return this;
+            },
+
+            show : function () {
+                this.$el.css({
+                    display : 'block'
+                });
             },
 
             tagName : 'div'

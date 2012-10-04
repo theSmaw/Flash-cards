@@ -21,7 +21,7 @@ define([
             el : '<li class="card"></li>',
 
             events : {
-                'wordClicked' : 'showImage'
+                'click' : 'progress'
             },
 
             hide : function () {
@@ -33,6 +33,12 @@ define([
             initialize : function () {
                 _.bindAll(this);
                 this.render();
+            },
+
+            progress : function () {
+                if (this.showing === 'word') {
+                    this.showImage();
+                }
             },
 
             render : function () {
@@ -50,10 +56,11 @@ define([
             },
 
             showImage : function () {
-                console.log('si');
                 this.wordView.hide();
                 this.imageView.show();
-            }
+            },
+
+            showing : 'word'
         });
 
     return CardView;

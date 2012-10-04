@@ -1,10 +1,6 @@
 define(function () {
     var WordView = Backbone.View.extend({
 
-            events : {
-                'click' : 'wordClicked'
-            },
-
             initialize : function () {
                 _.bindAll(this, 'render');
                 this.render();
@@ -20,18 +16,19 @@ define(function () {
                 return this;
             },
 
+            hide : function () {
+                this.$el.css({
+                    display : 'none'
+                });
+            },
+
             show : function () {
                 this.$el.css({
                     display : 'block'
                 });
             },
 
-            tagName : 'div',
-
-            wordClicked : function () {
-                console.log('w');
-                this.trigger('wordClicked');
-            }
+            tagName : 'div'
         });
 
     return WordView;
