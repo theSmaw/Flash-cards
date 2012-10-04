@@ -27,18 +27,10 @@ database.findCards();
 */
 
 /*
-db.cards.save({
-    word : 'tree',
-    url : 'http://farm7.staticflickr.com/6016/5949819558_47a5117548_b.jpg'
-})
-db.cards.save({
- word : 'house',
- url : 'http://farm5.staticflickr.com/4154/5007151269_3aea1aea24_z.jpg'
- })
- db.cards.save({
- word : 'flower',
- url : 'http://farm9.staticflickr.com/8424/7787351250_03c4ed4ecc_b.jpg'
- })
+use cards
+db.cards.save({word : 'tree', url : 'http://farm7.staticflickr.com/6016/5949819558_47a5117548_b.jpg'})
+db.cards.save({word : 'house', url : 'http://farm5.staticflickr.com/4154/5007151269_3aea1aea24_z.jpg'})
+db.cards.save({word : 'flower', url : 'http://farm9.staticflickr.com/8424/7787351250_03c4ed4ecc_b.jpg'})
  */
 
 
@@ -50,13 +42,13 @@ var application_root = __dirname,
 
 var app = express.createServer();
 
-mongoose.connect('mongodb://localhost:27017/flashcards');
+mongoose.connect('mongodb://localhost:27017/cards');
 
 var Card = mongoose.model('card', new mongoose.Schema({
     word : String,
     url : String
 }));
-console.log(application_root);
+
 app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
