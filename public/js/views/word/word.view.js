@@ -1,6 +1,10 @@
 define(function () {
     var WordView = Backbone.View.extend({
 
+            events :  {
+                click : 'progress'
+            },
+
             initialize : function () {
                 _.bindAll(this, 'render');
                 this.render();
@@ -20,6 +24,11 @@ define(function () {
                 this.$el.css({
                     display : 'none'
                 });
+            },
+
+            progress : function () {
+                this.hide();
+                this.trigger('progress');
             },
 
             show : function () {

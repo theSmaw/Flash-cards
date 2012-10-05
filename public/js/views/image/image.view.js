@@ -1,6 +1,10 @@
 define(function () {
     var ImageView = Backbone.View.extend({
 
+            events :  {
+                click : 'progress'
+            },
+
             hide : function () {
                 this.$el.css({
                     display : 'none'
@@ -10,6 +14,11 @@ define(function () {
             initialize : function () {
                 _.bindAll(this, 'render');
                 this.render();
+            },
+
+            progress : function () {
+                this.hide();
+                this.trigger('progress');
             },
 
             render : function () {

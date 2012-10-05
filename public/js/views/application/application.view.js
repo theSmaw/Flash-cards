@@ -12,7 +12,7 @@ define([
         },
 
         render : function () {
-            this.$el.html(this.cardsView.render().el);
+            this.$el.html(this.cardsView.el);
         }
     });
 

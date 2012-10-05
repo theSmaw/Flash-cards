@@ -20,10 +20,6 @@ define([
 
             el : '<li class="card"></li>',
 
-            events : {
-                'click' : 'progress'
-            },
-
             hide : function () {
                 this.$el.css({
                     zIndex : 1
@@ -35,15 +31,23 @@ define([
                 this.render();
             },
 
+            observeSubViewEvents : function () {
+
+                this.imageView.bind('progress', function () {
+                    alert('a')
+                });
+
+                this.wordView.on('progress', this.progress);
+            },
+
             progress : function () {
-                if (this.showing === 'word') {
-                    this.showImage();
-                }
+                this.showImage();
             },
 
             render : function () {
                 this.appendWord();
                 this.appendImage();
+                this.observeSubViewEvents();
 
                 return this;
             },
