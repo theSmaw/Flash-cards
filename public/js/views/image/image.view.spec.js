@@ -1,64 +1,60 @@
 define([
     'libs/isolate!views/image/image.view'
 ], function (ImageView) {
+    var cardModel = Backbone.Model.extend({
+            defaults : {
+                url : 'http://image/view/spec',
+                word : 'ImageViewSpec'
+            }
+        }),
+        imageView;
+
+    function after () {
+        imageView.off();
+        imageView.remove();
+    }
+
+    function before () {
+        imageView = new ImageView({
+            model : new cardModel()
+        });
+    }
 
     describe('ImageView', function () {
-
-        beforeEach(function () {
-            this.Card = Backbone.Model.extend({
-                defaults : {
-                    url : 'http://image/view/spec',
-                    word : 'ImageViewSpec'
-                }
-            });
-        });
+        beforeEach(before);
+        afterEach(after);
 
         describe('ImageView.initialize', function () {
 
             it('should be a method', function () {
-                var imageView = new ImageView();
-
                 expect(typeof(imageView.initialize)).toBe('function');
             });
         });
 
         describe('ImageView.render', function () {
+            var renderedImageView;
+
+            beforeEach(function () {
+                before();
+                renderedImageView = imageView.render();
+            });
+
+            afterEach(after);
 
             it('should be a method', function() {
-                var imageView = new ImageView;
-
                 expect(typeof(imageView.render)).toBe('function');
             });
 
             it('should return an object', function() {
-                var imageView = new ImageView({
-                        model : {
-                            get : function() {
-
-                            }
-                        }
-                    }),
-                    renderedView = imageView.render();
-
-                expect(typeof(renderedView)).toBe('object');
+                expect(typeof(renderedImageView)).toBe('object');
             });
 
             it('should return a rendered view with an el property of div', function() {
-                var imageView = new ImageView({
-                        model : new this.Card()
-                    }),
-                    renderedView = imageView.render();
-
-                expect(renderedView.el.nodeName.toLowerCase()).toBe('div');
+                expect(renderedImageView.el.nodeName.toLowerCase()).toBe('div');
             });
 
             it('should return an object with an $el property containing the expected markup', function() {
-                var imageView = new ImageView({
-                        model : new this.Card()
-                    }),
-                    renderedView = imageView.render();
-
-                expect(renderedView.$el.html()).toBe('<img src="http://image/view/spec">');
+                expect(renderedImageView.$el.html()).toBe('<img src="http://image/view/spec">');
             });
         });
     });

@@ -3,62 +3,58 @@ require([
 ], function (WordView) {
 
     describe('WordView', function () {
-
-        beforeEach(function () {
-            this.Card = Backbone.Model.extend({
+        var cardModel = Backbone.Model.extend({
                 defaults : {
                     url : 'http://word/view/spec',
                     word : 'WordViewSpec'
                 }
+            }),
+            wordView;
+
+        function after () {
+            wordView.off();
+            wordView.remove();
+        }
+
+        function before () {
+            wordView = new WordView({
+                model : new cardModel()
             });
-        });
+        }
 
         describe('WordView.initialize', function () {
+            beforeEach(before);
+            afterEach(after);
 
             it('should be a method', function () {
-                var wordView = new WordView();
-
                 expect(typeof(wordView.initialize)).toBe('function');
             });
         });
 
         describe('WordView.render', function () {
+            var renderedWordView;
+
+            beforeEach(function () {
+                before();
+                renderedWordView = wordView.render();
+            });
+
+            afterEach(after);
 
             it('should be a method', function() {
-                var wordView = new WordView;
-
                 expect(typeof(wordView.render)).toBe('function');
             });
 
             it('should return an object', function() {
-                var wordView = new WordView({
-                        model : {
-                            get : function() {
-
-                            }
-                        }
-                    }),
-                    renderedView = wordView.render();
-
-                expect(typeof(renderedView)).toBe('object');
+                expect(typeof(renderedWordView)).toBe('object');
             });
 
             it('should return a rendered view with an el property of div', function() {
-                var wordView = new WordView({
-                        model : new this.Card()
-                    }),
-                    renderedView = wordView.render();
-
-                expect(renderedView.el.nodeName.toLowerCase()).toBe('div');
+                expect(renderedWordView.el.nodeName.toLowerCase()).toBe('div');
             });
 
             it('should return an object with an $el property containing the expected markup', function() {
-                var wordView = new WordView({
-                        model : new this.Card()
-                    }),
-                    renderedView = wordView.render();
-
-                expect(renderedView.$el.html()).toBe('<h2>WordViewSpec</h2>');
+                expect(renderedWordView.$el.html()).toBe('<h2>WordViewSpec</h2>');
             });
         });
     });

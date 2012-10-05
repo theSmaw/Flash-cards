@@ -3,40 +3,46 @@ define([
 ], function (CardsView) {
     var cardsView;
 
+    CardsView.dependencies['collections/cards/cards.collection'].prototype = {
+
+        bind : function () {},
+
+        fetch : function () {
+            this.models = [{
+
+                get : function (property) {
+
+                    return this[property];
+                },
+
+                url : 'http://url01',
+                word : 'word01'
+            }, {
+
+                get : function (property) {
+
+                    return this[property];
+                },
+
+                url : 'http://url02',
+                word : 'word02'
+            }];
+        }
+    };
+    CardsView.dependencies['views/card/card.view'].prototype = {
+        el : document.createElement('div'),
+
+        render : function () {
+
+            return {
+                el : document.createElement('div')
+            };
+        },
+
+        show : function () {}
+    };
+
     function before() {
-        CardsView.dependencies['collections/cards/cards.collection'].prototype = {
-
-            bind : function () {},
-
-            fetch : function () {
-                this.models = [{
-                    get : function (property) {
-
-                        return this[property];
-                    },
-                    url : 'http://url01',
-                    word : 'word01'
-                }, {
-                    get : function (property) {
-
-                        return this[property];
-                    },
-                    url : 'http://url02',
-                    word : 'word02'
-                }];
-            }
-        };
-        CardsView.dependencies['views/card/card.view'].prototype = {
-
-            render : function () {
-
-                return {
-                    el : document.createElement('div')
-                };
-            },
-
-            show : function () {}
-        };
         cardsView = new CardsView();
     }
 
@@ -46,16 +52,12 @@ define([
     }
 
     describe('CardsView', function () {
+        beforeEach(before);
+        afterEach(after);
 
         describe('CardsView.initialize', function () {
-
-            beforeEach(function () {
-                before();
-            });
-
-            afterEach(function () {
-                after();
-            });
+            beforeEach(before);
+            afterEach(after);
 
             it('should be a method', function () {
                 expect(typeof(cardsView.initialize)).toBe('function');
@@ -86,14 +88,8 @@ define([
         });
 
         describe('CardsView.addCardToPage', function () {
-
-            beforeEach(function () {
-                before();
-            });
-
-            afterEach(function () {
-                after();
-            });
+            beforeEach(before);
+            afterEach(after);
 
             it('should be a method', function () {
                 expect(typeof(cardsView.addCardToPage)).toBe('function');
@@ -118,14 +114,8 @@ define([
         });
 
         describe('CardsView.showCard', function () {
-
-            beforeEach(function () {
-                before();
-            });
-
-            afterEach(function () {
-                after();
-            });
+            beforeEach(before);
+            afterEach(after);
 
             it('should be a method', function () {
                 expect(typeof(cardsView.showCard)).toBe('function');

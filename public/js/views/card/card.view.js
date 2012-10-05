@@ -33,7 +33,7 @@ define([
 
             observeSubViewEvents : function () {
 
-                this.imageView.bind('progress', function () {
+                this.imageView.on('progress', function () {
                     alert('a')
                 });
 
