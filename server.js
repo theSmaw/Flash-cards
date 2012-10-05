@@ -42,14 +42,23 @@ var application_root = __dirname,
 
 var app = express.createServer();
 
+var serverError;
+
 mongoose.connect('mongodb://localhost:27017/cards');
+
+mongoose.connection.on('error', function (error) {
+    if (error) {
+        console.log(error);
+        serverError = 'database';
+    }
+});
 
 var Card = mongoose.model('card', new mongoose.Schema({
     word : String,
     url : String
 }));
 
-app.configure(function(){
+app.configure(function () {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
@@ -69,16 +78,22 @@ app.get('/card', function(req, res){
 });
 
 app.get('/api/cards', function(req, res){
-   console.log('get cards');
+    if (serverError) {
 
-    return Card.find({}, null, {
-        sort : {
-            'word' : 1
-        }
-    }, function(err, cards) {
+        return res.send({
+            error : serverError
+        });
+    } else {
 
-        return res.send(cards);
-    });
+        return Card.find({}, null, {
+            sort : {
+                'word' : 1
+            }
+        }, function(err, cards) {
+
+            return res.send(cards);
+        });
+    }
 });
 
 app.get('/api/cards/:word', function(req, res){
