@@ -18,6 +18,10 @@ define([
                 this.$el.append(this.wordView.el);
             },
 
+            cardComplete : function () {
+                this.trigger('progress');
+            },
+
             el : '<li class="card"></li>',
 
             hide : function () {
@@ -32,11 +36,7 @@ define([
             },
 
             observeSubViewEvents : function () {
-
-                this.imageView.on('progress', function () {
-                    alert('a')
-                });
-
+                this.imageView.on('progress', this.cardComplete);
                 this.wordView.on('progress', this.progress);
             },
 

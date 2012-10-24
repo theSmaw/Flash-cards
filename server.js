@@ -38,25 +38,14 @@ db.cards.save({word : 'flower', url : 'http://farm9.staticflickr.com/8424/778735
 var application_root = __dirname,
     express = require('express'),
     path = require('path'),
-    mongoose = require('mongoose');
+    database = require('database');
 
 var app = express.createServer();
 
-var serverError;
 
-mongoose.connect('mongodb://localhost:27017/cards');
 
-mongoose.connection.on('error', function (error) {
-    if (error) {
-        console.log(error);
-        serverError = 'database';
-    }
-});
 
-var Card = mongoose.model('card', new mongoose.Schema({
-    word : String,
-    url : String
-}));
+var CardModel = database.getCardModel();
 
 app.configure(function () {
     app.use(express.bodyParser());
@@ -71,21 +60,16 @@ app.configure(function () {
 
 app.use(express.static(__dirname + '/'));
 
-app.get('/card', function(req, res){
-    res.render('card', {
-        title : 'MongoDB Backed Flashcards App'
-    });
-});
 
-app.get('/api/cards', function(req, res){
-    if (serverError) {
+app.get('/api/cards', function(req, res) {
+    if (database.isBroken()) {
 
         return res.send({
-            error : serverError
+            error : 'database'
         });
     } else {
 
-        return Card.find({}, null, {
+        return CardModel.find({}, null, {
             sort : {
                 'word' : 1
             }
@@ -98,7 +82,7 @@ app.get('/api/cards', function(req, res){
 
 app.get('/api/cards/:word', function(req, res){
 
-    return Card.findByWord(req.params.word, function(err, card) {
+    return CardModel.findByWord(req.params.word, function(err, card) {
         if (!err) {
 
             return res.send(card);

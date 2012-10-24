@@ -24,6 +24,7 @@ define([
             });
             this.cardViews[cardModel.get('word')] = cardView;
             this.$el.append(cardView.el);
+            cardView.on('progress', this.progress);
         },
 
         cardViews : {},
@@ -51,8 +52,11 @@ define([
             this.cards.fetch();
         },
 
-        initialize : function () {
-            _.bindAll(this);
+        progress : function () {
+            alert('progressing to next card');
+        },
+
+        render : function () {
             this.firstCard = true;
             this.cards = new CardsCollection();
             this.getCards();

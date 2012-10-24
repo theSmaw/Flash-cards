@@ -32,6 +32,8 @@ define([
     CardsView.dependencies['views/card/card.view'].prototype = {
         el : document.createElement('div'),
 
+        on : function () {},
+
         render : function () {
 
             return {
@@ -55,13 +57,15 @@ define([
         beforeEach(before);
         afterEach(after);
 
-        describe('CardsView.initialize', function () {
-            beforeEach(before);
-            afterEach(after);
+        describe('Rendering', function () {
 
-            it('should be a method', function () {
-                expect(typeof(cardsView.initialize)).toBe('function');
+            beforeEach(function () {
+                before();
+                cardsView.initialize();
+                cardsView.render();
             });
+
+            afterEach(after);
 
             it('should get the cards from the server', function () {
                 expect(typeof(cardsView.cards)).toBe('object');
@@ -87,13 +91,14 @@ define([
             });
         });
 
-        describe('CardsView.addCardToPage', function () {
-            beforeEach(before);
-            afterEach(after);
-
-            it('should be a method', function () {
-                expect(typeof(cardsView.addCardToPage)).toBe('function');
+        describe('adding cards to the page', function () {
+            beforeEach(function () {
+                before();
+                cardsView.initialize();
+                cardsView.render();
             });
+
+            afterEach(after);
 
             it('should add a card view', function () {
                 cardsView.$el = $('<ul></ul>');
@@ -113,7 +118,7 @@ define([
             });
         });
 
-        describe('CardsView.showCard', function () {
+        describe('showing cards', function () {
             beforeEach(before);
             afterEach(after);
 

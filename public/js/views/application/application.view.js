@@ -8,6 +8,11 @@ define([
         initialize : function () {
             _.bindAll(this);
             this.cardsView = new CardsView();
+            this.cardsView.render();
+            this.observeSubViewEvents();
+        },
+
+        observeSubViewEvents : function () {
             this.cardsView.cards.bind('reset', this.render);
         },
 
