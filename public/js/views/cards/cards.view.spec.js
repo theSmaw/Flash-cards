@@ -57,12 +57,11 @@ define([
         beforeEach(before);
         afterEach(after);
 
-        describe('Rendering', function () {
+        describe('Initialization', function () {
 
             beforeEach(function () {
                 before();
                 cardsView.initialize();
-                cardsView.render();
             });
 
             afterEach(after);

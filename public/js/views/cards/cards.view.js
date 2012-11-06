@@ -5,6 +5,7 @@ define([
     var CardsView = Backbone.View.extend({
 
         addCard : function (model) {
+            this.cardsOrder.push(model);
             this.addCardToPage(model);
             this.createCardRoute(model);
         },
@@ -24,8 +25,11 @@ define([
             });
             this.cardViews[cardModel.get('word')] = cardView;
             this.$el.append(cardView.el);
-            cardView.on('progress', this.progress);
+
+            cardView.on('progress', _.bind(this.progress, this));
         },
+
+        cardsOrder : [],
 
         cardViews : {},
 
@@ -39,9 +43,12 @@ define([
             this.routerData.routes[cardModel.get('word')] = cardModel.get('word');
 
             this.routerData[cardModel.get('word')] = _.bind(function () {
-                this.showCard(cardModel.get('word'));
+                debugger
+                this.showCard(this.cardsOrder[this.currentCard].get('word'));
             }, this);
         },
+
+        currentCard : 0,
 
         el : '<ul id="cards"></ul>',
 
@@ -53,7 +60,10 @@ define([
         },
 
         progress : function () {
-            alert('progressing to next card');
+            this.currentCard += 1;
+            this.cardsRouter.navigate(this.cardsOrder[this.currentCard].get('word'), {
+                trigger : true
+            });
         },
 
         render : function () {
@@ -74,6 +84,7 @@ define([
             var CardsRouter;
 
             this.addCards();
+            debugger
             CardsRouter = Backbone.Router.extend(this.routerData);
             this.cardsRouter = new CardsRouter();
 

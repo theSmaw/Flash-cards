@@ -40,7 +40,7 @@ var application_root = __dirname,
     path = require('path'),
     database = require('database');
 
-var app = express.createServer();
+var app = express();
 
 
 
