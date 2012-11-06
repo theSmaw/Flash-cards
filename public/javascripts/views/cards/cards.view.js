@@ -66,6 +66,9 @@ define([
 
         progress : function () {
             this.currentCard += 1;
+            if (this.currentCard === this.cardsOrder.length) {
+                this.currentCard = 0;
+            }
             this.cardsRouter.navigate(this.cardsOrder[this.currentCard].get('word'), {
                 trigger : true
             });

@@ -54,8 +54,9 @@ define([
 
             show : function () {
                 this.wordView.show();
+                this.zIndex = this.zIndex += 1;
                 this.$el.css({
-                    zIndex : 2
+                    zIndex : this.zIndex
                 });
             },
 
@@ -64,7 +65,8 @@ define([
                 this.imageView.show();
             },
 
-            showing : 'word'
+            showing : 'word',
+            zIndex : 1
         });
 
     return CardView;
