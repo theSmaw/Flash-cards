@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  #app
+    #loading
+      #circleG_1
+      #circleG_2
+      #circleG_3
+  script(src="/javascripts/libs/$.js")
+  script(src="/javascripts/libs/_.js")
+  script(src="/javascripts/libs/Backbone.js")
+  script(src="/javascripts/libs/require.js")
+  script
+    require.config({
+      baseUrl : '/javascripts'
+    });
+  script
+    require(['main'], function (Main) {
+      var main = new Main();
+    });
