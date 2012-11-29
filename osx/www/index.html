@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flash cards</title>
+        <meta name="viewport" content="user-scalable=no" width="device-width">
+            <link rel="stylesheet" href="http://localhost:3000/stylesheets/global.css">
+                <link rel="stylesheet" href="http://localhost:3000/stylesheets/loading.css">
+                    </head>
+    <body>
+        <div id="app">
+            <div id="loading">
+                <div id="circleG_1"></div>
+                <div id="circleG_2"></div>
+                <div id="circleG_3"></div>
+            </div>
+        </div>
+        <script src="http://localhost:3000/javascripts/libs/$.js"></script>
+        <script src="http://localhost:3000/javascripts/libs/_.js"></script>
+        <script src="http://localhost:3000/javascripts/libs/Backbone.js"></script>
+        <script src="http://localhost:3000/javascripts/libs/require.js"></script>
+        <script>require.config({
+                               baseUrl : 'http://localhost:3000/javascripts'
+                               });</script>
+        <script>require(['main'], function (Main) {
+                        var main = new Main();
+                        });</script>
+    </body>
+</html>
