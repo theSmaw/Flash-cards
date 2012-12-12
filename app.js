@@ -1,6 +1,12 @@
 
-/**
- * Module dependencies.
+/*
+// img width 1024
+ use cards
+ db.cards.save({word : 'bee', url : 'http://farm1.staticflickr.com/28/96101425_fd3ed49773_b.jpg'})
+ db.cards.save({word : 'cat', url : 'http://farm2.staticflickr.com/1404/5110833180_971bfb3b4f_b.jpg'})
+ db.cards.save({word : 'dog', url : 'http://farm4.staticflickr.com/3052/3086132328_e2041be795_b.jpg'})
+ db.cards.save({word : 'owl', url : 'http://farm7.staticflickr.com/6005/5927758528_a2060423e7_b.jpg'})
+
  */
 
 var express = require('express'),
@@ -18,7 +24,7 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 3001);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
