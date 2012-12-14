@@ -1,6 +1,7 @@
 body {
     background: #fff;
     height: 100%;
+    font-family: Georgia;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -31,6 +32,8 @@ html {
     height: 100%;
     left: 0;
     position: absolute;
+    text-align: center;
+    text-transform: uppercase;
     top: 0;
     width: 100%;
 }

@@ -1,6 +1,8 @@
 define(function () {
     var WordView = Backbone.View.extend({
 
+            className : 'word',
+
             events :  {
                 click : 'progress'
             },
