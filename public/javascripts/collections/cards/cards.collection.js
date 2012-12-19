@@ -3,7 +3,7 @@ define([
 ], function (Card) {
     var Cards = Backbone.Collection.extend({
             model : Card,
-            url : 'http://localhost:3001/cards'
+            url : '/cards'
         });
 
     return Cards;
