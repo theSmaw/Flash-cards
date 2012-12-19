@@ -1,12 +1,13 @@
 .word {
   margin: 0 auto;
-  position: relative;
+  position: absolute;
 }
 
 .word h2 {
   font-size: inherit;
   line-height: 1;
   margin-top: -1.5em;
+  position: relative;
   top: 50%;
 }
 
