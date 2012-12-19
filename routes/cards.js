@@ -4,18 +4,25 @@ var CardModel = database.getCardModel();
 
 function index (req, res){
     if (database.isBroken()) {
-
+        console.log('database is broken');
+        
         return res.send({
             error : 'database'
         });
     } else {
-
+        console.log('database ok');
+        
         return CardModel.find({}, null, {
             sort : {
                 'word' : 1
             }
         }, function(err, cards) {
-
+            if (err) {
+                console.log('error', err);
+            } else {
+                console.log('returning cards', cards);
+            }
+            
             return res.send(cards);
         });
     }
