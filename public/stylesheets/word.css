@@ -1,11 +1,18 @@
 .word {
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: auto;
   margin: 0 auto;
   position: absolute;
 }
 
 .word span {
-  background: #eee;
+  background: #333;
+  color: #eee;
   display: inline-block;
-  margin: 0 2px 0 0;
-  padding: 5px;
+  font-size: 4em;
+  margin: 0 0.5em 0 0;
+  padding: 0.5em 0;
+  width: 4em;
 }
