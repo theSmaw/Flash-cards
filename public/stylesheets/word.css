@@ -1,6 +1,6 @@
 .word {
   margin: 0 auto;
-  position: absolute;
+  position: relative;
 }
 
 .word h2 {
