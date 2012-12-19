@@ -10,7 +10,6 @@ function index (req, res){
             error : 'database'
         });
     } else {
-        console.log('database ok', process.env.MONGOLAB_URI);
         
         return CardModel.find({}, null, {
             sort : {

@@ -1,6 +1,8 @@
 
 /*
 // img width 1024
+db.cards.insert({})
+
  use cards
  db.cards.save({word : 'bee', url : 'http://farm1.staticflickr.com/28/96101425_fd3ed49773_b.jpg'})
  db.cards.save({word : 'cat', url : 'http://farm2.staticflickr.com/1404/5110833180_971bfb3b4f_b.jpg'})
