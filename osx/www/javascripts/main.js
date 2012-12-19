@@ -3,6 +3,7 @@ define([
 ], function (ApplicationView) {
 
     function Main() {
+       alert('here')
         this.applicationView = new ApplicationView();
     }
 

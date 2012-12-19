@@ -6,17 +6,12 @@ define([
         el : $('#app'),
 
         initialize : function () {
-            _.bindAll(this);
             this.cardsView = new CardsView();
-            this.observeSubViewEvents();
-        },
-
-        observeSubViewEvents : function () {
-            this.cardsView.cards.bind('reset', this.render);
         },
 
         render : function () {
             this.$el.html(this.cardsView.el);
+            this.cardsView.render();
         }
     });
 

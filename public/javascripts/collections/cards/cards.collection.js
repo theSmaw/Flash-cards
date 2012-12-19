@@ -9,6 +9,17 @@ define([
         
         // url : '/cards'
         });
+    
+    var card1 = new Card({
+        word : 'bee', 
+        url : 'http://farm1.staticflickr.com/28/96101425_fd3ed49773_b.jpg'
+    });
+    var card2 = new Card({
+        word : 'tree',
+        url : 'http://farm1.staticflickr.com/28/96101425_fd3ed49773_b.jpg'
+    });
 
-    return Cards;
+    var cards = new Cards([card1, card2]);
+    
+    return cards; 
 });

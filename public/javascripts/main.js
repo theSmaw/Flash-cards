@@ -4,6 +4,7 @@ define([
 
     function Main() {
         this.applicationView = new ApplicationView();
+        this.applicationView.render();
     }
 
     return Main;
