@@ -14,6 +14,7 @@
         "mongoose" : "3.3.x"
     },
     "scripts": {
-        "dev": "MONGOLAB_URI=mongodb://localhost:27017 node app.js"
+        "dev": "MONGOLAB_URI=mongodb://localhost:27017 node app.js",
+        "prod": "MONGOLAB_URI=mongodb://admin:spice5juice@ds045627.mongolab.com:45627/heroku_app10176768 node app.js"
     }
 }
