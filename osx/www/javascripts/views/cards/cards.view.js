@@ -11,6 +11,7 @@ define([
         },
 
         addCards : function () {
+
             _(this.cards.models).each(_.bind(function (model) {
                 this.addCard(model);
             }, this));

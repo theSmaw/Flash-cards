@@ -3,11 +3,7 @@ define([
 ], function (Card) {
     var Cards = Backbone.Collection.extend({
             model : Card,
-        
-            // iphone needs the full path
-            url : 'http://localhost:3001/cards'
-        
-        // url : '/cards'
+            url : '/cards'
         });
 
     return Cards;
