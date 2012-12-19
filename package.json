@@ -1,4 +1,8 @@
 {
+    "engines": {
+        "node": "0.8.4",
+        "npm": "1.1.41"
+    },
     "name": "Flash-cards",
     "description ": "Flash-cards app",
     "version": "0.0.1",
@@ -9,8 +13,7 @@
         "mongojs" : "0.4.x",
         "mongoose" : "3.3.x"
     },
-    "engines": {
-        "node": "0.8.4",
-        "npm": "1.1.41"
+    "scripts": {
+        "dev": "MONGOLAB_URI=mongodb://localhost:27017 node app.js"
     }
 }
