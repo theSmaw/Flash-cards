@@ -7,7 +7,7 @@
 .word h2 {
   font-size: inherit;
   line-height: 1;
-  position: relative;
+  position: absolute;
   top: -2em;
 }
 
@@ -15,8 +15,8 @@
   background: #eee;
   color: #111;
   display: inline-block;
-  font-size: 3.6em;
-  margin: 0 0.2em 0 0;
-  padding: 1em 0;
-  width: 4em;
+  font-size: 1.8em;
+  margin: 0 0.1em 0 0;
+  padding: 0.5em 0;
+  width: 2em;
 }
