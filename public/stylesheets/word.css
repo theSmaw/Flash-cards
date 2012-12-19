@@ -1,18 +1,22 @@
 .word {
-  left: auto;
-  top: auto;
-  right: auto;
-  bottom: auto;
+  top: 50%;
   margin: 0 auto;
   position: absolute;
 }
 
+.word h2 {
+  font-size: inherit;
+  line-height: 1;
+  position: relative;
+  top: -2em;
+}
+
 .word span {
-  background: #333;
-  color: #eee;
+  background: #eee;
+  color: #111;
   display: inline-block;
-  font-size: 2em;
+  font-size: 3.6em;
   margin: 0 0.2em 0 0;
-  padding: 0.2em 0;
-  width: 2em;
+  padding: 1em 0;
+  width: 4em;
 }
