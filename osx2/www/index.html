@@ -21,11 +21,24 @@
   <script src="javascripts/libs/_.js"></script>
   <script src="javascripts/libs/Backbone.js"></script>
   <script src="javascripts/libs/require.js"></script>
+  <script src="cordova-2.2.0.js"></script>
   <script>require.config({
     baseUrl : 'javascripts'
 });</script>
-  <script>require(['main'], function (Main) {
-    var main = new Main();
-});</script>
+    <script>
+      document.addEventListener('deviceready', function () {
+        var media = new Media('audio/a.mp3', function () {
+                              alert('soundplayed');
+                              });
+
+        media.play();
+        require(['main'], function (Main) {
+            var main = new Main();
+          
+        });
+      }, false);
+
+        
+    </script>
   </body>
 </html>
