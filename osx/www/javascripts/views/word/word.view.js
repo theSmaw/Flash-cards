@@ -9,7 +9,8 @@ define(function () {
 
             hide : function () {
                 this.$el.css({
-                    display : 'none'
+                    display: 'none',
+                    opacity : 0
                 });
             },
 
@@ -36,7 +37,8 @@ define(function () {
 
             show : function () {
                 this.$el.css({
-                    display : 'block'
+                    display: 'block',
+                    opacity : 1
                 });
             },
 

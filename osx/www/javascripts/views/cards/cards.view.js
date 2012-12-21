@@ -7,11 +7,9 @@ define([
         addCard : function (model) {
             this.cardsOrder.push(model);
             this.addCardToPage(model);
-            this.createCardRoute(model);
         },
 
         addCards : function () {
-
             _(this.cards.models).each(_.bind(function (model) {
                 this.addCard(model);
             }, this));
@@ -33,62 +31,33 @@ define([
 
         cardViews : {},
 
-        contentCache : null,
-
-        createCardRoute : function (cardModel) {
-            if (this.firstCard === true) {
-                this.firstCard = false;
-                this.routerData.routes[''] = cardModel.get('word');
-            }
-            this.routerData.routes[cardModel.get('word')] = cardModel.get('word');
-
-            this.routerData[cardModel.get('word')] = _.bind(function () {
-                this.showCard(this.cardsOrder[this.currentCard].get('word'));
-            }, this);
-        },
-
         currentCard : 0,
 
         el : '<ul id="cards"></ul>',
 
         firstCard : true,
 
-        getCards : function () {
-            this.cards.bind('reset', _.bind(this.render, this));
-            this.cards.fetch();
+        hideCard : function (word) {
+            this.cardViews[word].hide();
         },
 
         initialize : function () {
             this.firstCard = true;
-            this.cards = new CardsCollection();
-            this.getCards();
+            this.cards = CardsCollection;
+            this.addCards();
         },
 
         progress : function () {
+            this.hideCard(this.cardsOrder[this.currentCard].get('word'));
             this.currentCard += 1;
             if (this.currentCard === this.cardsOrder.length) {
                 this.currentCard = 0;
             }
-            this.cardsRouter.navigate(this.cardsOrder[this.currentCard].get('word'), {
-                trigger : true
-            });
+            this.showCard(this.cardsOrder[this.currentCard].get('word'));
         },
 
         render : function () {
-            var CardsRouter;
-
-            this.addCards();
-            CardsRouter = Backbone.Router.extend(this.routerData);
-            this.cardsRouter = new CardsRouter();
-
-            // try allows this to be run multiple times in tests
-            try {
-                Backbone.history.start();
-            } catch (e) {}
-        },
-
-        routerData : {
-            routes : {}
+            this.showCard(this.cardsOrder[this.currentCard].get('word'));
         },
 
         showCard : function (word) {

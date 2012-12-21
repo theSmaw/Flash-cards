@@ -32,6 +32,7 @@ html {
 }
 
 #cards .card {
+    display: none;
     height: 100%;
     left: 0;
     position: absolute;
@@ -42,10 +43,10 @@ html {
 }
 
 #cards .card div {
-    display: none;
     height: 100%;
     left: 0;
     position: absolute;
+    top: 0;
     width: 100%;
 }
 

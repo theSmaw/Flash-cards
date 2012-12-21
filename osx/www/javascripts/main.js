@@ -3,8 +3,8 @@ define([
 ], function (ApplicationView) {
 
     function Main() {
-       alert('here')
         this.applicationView = new ApplicationView();
+        this.applicationView.render();
     }
 
     return Main;

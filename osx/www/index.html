@@ -1,38 +1,45 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Flash cards</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" width="device-width">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="stylesheet" href="http://localhost:3001/stylesheets/global.css">
-        <link rel="stylesheet" href="http://localhost:3001/stylesheets/loading.css">
-        <link rel="stylesheet" href="http://localhost:3001/stylesheets/word.css">
-    </head>
-    <body>
-        <div id="app">
-            <div id="loading">
-                <div id="circleG_1"></div>
-                <div id="circleG_2"></div>
-                <div id="circleG_3"></div>
-            </div>
-        </div>
-        <script src="http://localhost:3001/javascripts/libs/$.js"></script>
-        <script src="http://localhost:3001/javascripts/libs/_.js"></script>
-        <script src="http://localhost:3001/javascripts/libs/Backbone.js"></script>
-        <script src="http://localhost:3001/javascripts/libs/require.js"></script>
-        <script>
-            require.config({
-                           baseUrl : 'http://localhost:3001/javascripts/'
-            });
-        </script>
-        <script>
-            
-            require(['main'], function (Main) {
-                    var main = new Main();
-                    
-            });
-        </script>
-    </body>
+  <head>
+    <title>Flash cards</title>
+    <meta name="viewport" content="user-scalable=no" width="device-width">
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <link rel="stylesheet" href="stylesheets/global.css">
+    <link rel="stylesheet" href="stylesheets/image.css">
+    <link rel="stylesheet" href="stylesheets/loading.css">
+    <link rel="stylesheet" href="stylesheets/word.css">
+  </head>
+  <body>
+  <div id="app">
+    <div id="loading">
+      <div id="circleG_1"></div>
+      <div id="circleG_2"></div>
+      <div id="circleG_3"></div>
+    </div>
+  </div>
+  <script src="javascripts/libs/$.js"></script>
+  <script src="javascripts/libs/_.js"></script>
+  <script src="javascripts/libs/Backbone.js"></script>
+  <script src="javascripts/libs/require.js"></script>
+  <script src="cordova-2.2.0.js"></script>
+  <script>require.config({
+    baseUrl : 'javascripts'
+});</script>
+    <script>
+     // document.addEventListener('deviceready', function () {
+      //  var media = new Media('audio/a.mp3', function () {
+        //                      alert('soundplayed');
+          //                    });
+
+        //media.play();
+        require(['main'], function (Main) {
+            var main = new Main();
+          
+        });
+     // }, false);
+
+        
+    </script>
+  </body>
 </html>

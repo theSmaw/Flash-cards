@@ -26,7 +26,7 @@ define([
 
             hide : function () {
                 this.$el.css({
-                    zIndex : 1
+                    display : 'none'
                 });
             },
 
@@ -53,10 +53,10 @@ define([
             },
 
             show : function () {
+                this.imageView.show();
                 this.wordView.show();
-                this.zIndex = this.zIndex += 1;
                 this.$el.css({
-                    zIndex : this.zIndex
+                    display : 'block'
                 });
             },
 
@@ -65,8 +65,7 @@ define([
                 this.imageView.show();
             },
 
-            showing : 'word',
-            zIndex : 1
+            showing : 'word'
         });
 
     return CardView;

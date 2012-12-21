@@ -1,6 +1,8 @@
 define(function () {
     var ImageView = Backbone.View.extend({
 
+            className : 'image',
+
             events :  {
                 click : 'progress'
             },
