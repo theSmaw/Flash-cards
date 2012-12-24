@@ -22,6 +22,7 @@
   <script src="javascripts/libs/_.js"></script>
   <script src="javascripts/libs/Backbone.js"></script>
   <script src="javascripts/libs/require.js"></script>
+  <script src="javascripts/libs/fastclick.js"></script>
   <script src="cordova-2.2.0.js"></script>
   <script>require.config({
     baseUrl : 'javascripts'
@@ -33,6 +34,7 @@
           //                    });
 
         //media.play();
+
         require(['main'], function (Main) {
             var main = new Main();
           

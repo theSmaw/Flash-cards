@@ -4,7 +4,20 @@ define(function () {
             className : 'word',
 
             events :  {
-                click : 'progress'
+                'click button' : 'progress',
+                'click span' : 'emphasize'
+            },
+        
+            emphasize : function (e) {
+                var letter = $(e.target);
+
+                letter.stop().animate({
+                    'font-size' : '3.5em'
+                }, 75, function () {
+                    letter.animate({
+                        'font-size' : '3em'
+                    }, 200);
+                });
             },
 
             hide : function () {
@@ -25,7 +38,7 @@ define(function () {
             },
 
             render : function () {
-                var template = _.template('<h2><%= word %></h2>'),
+                var template = _.template('<h2><%= word %></h2><button>&gt;</button>'),
                     word = this.splitWord(this.model.get('word'));
 
                 this.$el.html(template({
