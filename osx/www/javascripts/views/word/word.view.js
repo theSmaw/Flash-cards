@@ -58,7 +58,7 @@ define(function () {
             splitWord : function (word) {
                 var letters = word.split('');
 
-                return '<span>' + letters.join('</span><span>') + '</span>';
+                return '<span><span>' + letters.join('</span></span><span><span>') + '</span></span>';
             },
 
             tagName : 'div'

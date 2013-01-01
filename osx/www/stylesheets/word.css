@@ -20,17 +20,23 @@
   font-size: inherit;
   line-height: 1;
   position: relative;
+  text-align: center;
   top: 50%;
 }
 
 .word span {
-  background: rgba(255,255,255,0.8);
-  color: #111;
   display: inline-block;
-  font-size: 3em;
-  margin: 0 0.2em 0 0;
-  padding: 0.6em 0;
+  margin: 0 6.5em 0 0;
   position: relative;
   top: -1.4em;
   width: 3em;
+}
+
+.word span span {
+  background: rgba(255,255,255,0.8);
+  color: #111;
+  display: block;
+  padding: 0.75em 0;
+  font-size: 3em;
+  position: absolute;
 }
