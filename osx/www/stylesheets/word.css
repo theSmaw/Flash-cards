@@ -7,18 +7,22 @@
 .word button {
   background: rgba(255,255,255,0.8);
   border: none;
-  bottom: 1em;
-  font-size: 2em;
-  margin: 0 0.15em 0 0;
-  padding: 0.4em 0;
+  bottom: 1rem;
+  font-size: 2rem;
+  margin: 0 0.15rem 0 0;
+  padding: 0.4rem 0;
   position: absolute;
-  right: 1em;
-  width: 2em;
+  right: 1rem;
+  width: 2rem;
 }
 
 .word h2 {
+  font-family: "Courier New";
   font-size: inherit;
+  font-weight: bold;
+  letter-spacing: 1rem;
   line-height: 1;
+  margin: 0;
   position: relative;
   text-align: center;
   top: 50%;
@@ -26,17 +30,22 @@
 
 .word span {
   display: inline-block;
-  margin: 0 6.5em 0 0;
+  margin: 0 4.8rem 0 0;
   position: relative;
-  top: -1.4em;
-  width: 3em;
+  top: -1.75rem;
 }
 
 .word span span {
   background: rgba(255,255,255,0.8);
   color: #111;
   display: block;
-  padding: 0.75em 0;
-  font-size: 3em;
+  padding: 0.6rem 0.4rem 0.6rem 1.2rem;
+  font-size: 3.2rem;
   position: absolute;
+}
+
+.emphasize {
+    font-size: 5rem;
+      -webkit-transition: font-size .25s ease-out;
+      transition: font-size .25s easeout;
 }

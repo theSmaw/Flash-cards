@@ -10,27 +10,27 @@ define([
         // url : '/cards'
         });
     
-    var card1 = new Card({
-        word : 'bee', 
-        url : 'images/bee.jpg'
-    });
-    
-    var card2 = new Card({
-        word : 'cat',
+    var cat = new Card({
+        word : ['c', 'a', 't'],
         url : 'images/cat.jpg'
     });
 
-    var card3 = new Card({
-        word : 'dog',
+    var dog = new Card({
+        word : ['d', 'o', 'g'],
         url : 'images/dog.jpg'
     });
 
-    var card4 = new Card({
-        word : 'owl',
+    var duck = new Card({
+        word : ['d', 'u', 'c', 'k'],
+        url : 'images/duck.jpg'
+    });
+
+    var owl = new Card({
+        word : ['o', 'w', 'l'],
         url : 'images/owl.jpg'
     });
 
-    var cards = new Cards([card1, card2, card3, card4]);
+    var cards = new Cards([cat, dog, duck, owl]);
     
     return cards; 
 });
