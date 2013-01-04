@@ -2,71 +2,65 @@ define([
     'views/image/image.view',
     'views/word/word.view'
 ], function (ImageView, WordView) {
-    var CardView = Backbone.View.extend({
+    var CardView = function (card) {
+            this.$el = $('<li class="card"></li>');
+            this.image = card.image;
+            this.word = card.word;
+            _.bindAll(this);
+        };
+    
+    CardView.prototype = {
 
-            appendImage : function () {
-                this.imageView = new ImageView({
-                    model : this.model
-                });
-                this.$el.append(this.imageView.el);
-            },
+        appendImage : function () {
+            this.imageView = new ImageView(this.image);
+            this.imageView.render();
+            this.$el.append(this.imageView.$el);
+        },
 
-            appendWord : function () {
-                this.wordView = new WordView({
-                    model : this.model
-                });
-                this.$el.append(this.wordView.el);
-            },
+        appendWord : function () {
+            this.wordView = new WordView(this.word);
+            this.wordView.render();
+            this.$el.append(this.wordView.$el);
+        },
 
-            cardComplete : function () {
-                this.trigger('progress');
-            },
+        cardComplete : function () {
+            this.$el.trigger('cardComplete');
+        },
 
-            el : '<li class="card"></li>',
+        hide : function () {
+            this.$el.css({
+                display : 'none'
+            });
+        },
 
-            hide : function () {
-                this.$el.css({
-                    display : 'none'
-                });
-            },
+        observeSubViewEvents : function () {
+            this.imageView.$el.on('imageComplete', this.cardComplete);
+            this.wordView.$el.on('wordComplete', this.progress);
+        },
 
-            initialize : function () {
-                _.bindAll(this);
-                this.render();
-            },
+        progress : function () {
+            this.showImage();
+        },
 
-            observeSubViewEvents : function () {
-                this.imageView.on('progress', this.cardComplete);
-                this.wordView.on('progress', this.progress);
-            },
+        render : function () {
+            this.appendWord();
+            this.appendImage();
+            this.observeSubViewEvents();
+        },
 
-            progress : function () {
-                this.showImage();
-            },
+        show : function () {
+            this.imageView.show();
+            this.wordView.show();
+            this.$el.css({
+                display : 'block'
+            });
+        },
 
-            render : function () {
-                this.appendWord();
-                this.appendImage();
-                this.observeSubViewEvents();
-
-                return this;
-            },
-
-            show : function () {
-                this.imageView.show();
-                this.wordView.show();
-                this.$el.css({
-                    display : 'block'
-                });
-            },
-
-            showImage : function () {
-                this.wordView.hide();
-                this.imageView.show();
-            },
-
-            showing : 'word'
-        });
+        showImage : function () {
+            this.wordView.hide();
+            this.imageView.show();
+        }
+    };
 
     return CardView;
 });

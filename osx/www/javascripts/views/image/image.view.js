@@ -1,46 +1,45 @@
 define(function () {
-    var ImageView = Backbone.View.extend({
+    var ImageView = function (image) {
+            this.$el = $('<div class="image"></div>');
+            this.image = image;
+            this.observeViewEvents();
+        };
+    
+    ImageView.prototype = {
 
-            className : 'image',
+        events :  {
+            click : 'progress'
+        },
 
-            events :  {
-                click : 'progress'
-            },
+        hide : function () {
+            this.$el.css({
+                display : 'none'
+            });
+        },
+        
+        observeViewEvents : function () {
+            this.$el.bind('click', _.bind(this.imageComplete, this));
+        },
 
-            hide : function () {
-                this.$el.css({
-                    display : 'none'
-                });
-            },
+        imageComplete : function () {
+            this.hide();
+            this.$el.trigger('imageComplete');
+        },
 
-            initialize : function () {
-                _.bindAll(this, 'render');
-                this.render();
-            },
+        render : function () {
+            var template = _.template('<img src="<%= image %>" />');
 
-            progress : function () {
-                this.hide();
-                this.trigger('progress');
-            },
+            this.$el.html(template({
+                image : this.image
+            }));
+        },
 
-            render : function () {
-                var template = _.template('<img src="<%= url %>" />');
-
-                this.$el.html(template({
-                    url : this.model.get('url')
-                }));
-
-                return this;
-            },
-
-            show : function () {
-                this.$el.css({
-                    display : 'block'
-                });
-            },
-
-            tagName : 'div'
-        });
+        show : function () {
+            this.$el.css({
+                display : 'block'
+            });
+        }
+    };
 
     return ImageView;
 });

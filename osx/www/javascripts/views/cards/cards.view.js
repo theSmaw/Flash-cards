@@ -2,68 +2,57 @@ define([
     'collections/cards/cards.collection',
     'views/card/card.view'
 ], function (CardsCollection, CardView) {
-    var CardsView = Backbone.View.extend({
-
-        addCard : function (model) {
-            this.cardsOrder.push(model);
-            this.addCardToPage(model);
-        },
-
-        addCards : function () {
-            _(this.cards.models).each(_.bind(function (model) {
-                this.addCard(model);
-            }, this));
-        },
-
-        addCardToPage : function(cardModel) {
-            var cardView;
-
-            cardView = new CardView({
-                model : cardModel
-            });
-            this.cardViews[cardModel.get('word')] = cardView;
-            this.$el.append(cardView.el);
-
-            cardView.on('progress', _.bind(this.progress, this));
-        },
-
-        cardsOrder : [],
-
-        cardViews : {},
-
-        currentCard : 0,
-
-        el : '<ul id="cards"></ul>',
-
-        firstCard : true,
-
-        hideCard : function (word) {
-            this.cardViews[word].hide();
-        },
-
-        initialize : function () {
+    var CardsView = function () {
+            this.$el = $('<ul id="cards"></ul>');
+            this.cardViews = [];
+            this.currentCard = 0;
             this.firstCard = true;
             this.cards = CardsCollection;
             this.addCards();
+        };
+    
+    CardsView.prototype = {
+
+        addCards : function () {
+            var card;
+            
+            for (card in this.cards) {
+                if(this.cards.hasOwnProperty(card)) {
+                    this.addCard(this.cards[card]);
+                }
+            }
+        },
+
+        addCard : function(card) {
+            var cardView = new CardView(card);
+            
+            this.cardViews.push(cardView);
+            this.$el.append(cardView.$el);
+            cardView.render();
+            cardView.$el.on('cardComplete', _.bind(this.progress, this));
+        },
+
+        hideCard : function () {
+            this.cardViews[this.currentCard].hide();
         },
 
         progress : function () {
-            this.hideCard(this.cardsOrder[this.currentCard].get('word'));
+            this.hideCard();
             this.currentCard += 1;
-            if (this.currentCard === this.cardsOrder.length) {
+            if (this.currentCard === this.cardViews.length) {
                 this.currentCard = 0;
             }
-            this.showCard(this.cardsOrder[this.currentCard].get('word'));
+            this.showCard();
         },
 
         render : function () {
-            this.showCard(this.cardsOrder[this.currentCard].get('word'));
+            this.showCard();
         },
 
-        showCard : function (word) {
-            this.cardViews[word].show();
+        showCard : function () {
+            this.cardViews[this.currentCard].show();
         }
-    });
+    };
 
     return CardsView;
 });

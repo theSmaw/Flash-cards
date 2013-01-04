@@ -1,30 +1,27 @@
 define([
     'views/cards/cards.view'
 ], function (CardsView) {
-    var ApplicationView = Backbone.View.extend({
-        
-        bindFastClick : function () {
-            new FastClick(this.el);
-        },
-
-        el : '#app',
-        
-        enableFastClick : function () {
-            var el = this.el;
-            
-            window.addEventListener('load', _.bind(this.bindFastClick, this), false);
-        },
-
-        initialize : function () {
+    var ApplicationView = function () {
+            this.$el = $('#app');
             this.enableFastClick();
             this.cardsView = new CardsView();
+        };
+
+    ApplicationView.prototype = {
+
+        enableFastClick : function () {
+            var el = this.$el.get(0);
+            
+            window.addEventListener('load', function () {
+                new FastClick(el);
+            }, false);
         },
 
         render : function () {
-            this.$el.html(this.cardsView.el);
+            this.$el.html(this.cardsView.$el);
             this.cardsView.render();
         }
-    });
+    };
 
     return ApplicationView;
 });

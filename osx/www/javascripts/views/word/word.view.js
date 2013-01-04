@@ -1,72 +1,65 @@
-define(function () {
-    var WordView = Backbone.View.extend({
-
-            className : 'word',
-
-            events :  {
-                'click button' : 'progress',
-                'mousedown span span' : 'emphasize',
-                'mouseup span span' : 'deEmphasize',
-                'touchend span span' : 'deEmphasize',
-                'touchstart span span' : 'emphasize'
-            },
+define([
+    'views/letter/letter.view'
+], function (LetterView) {
+    var WordView = function (word) {
+            this.$el = $('<div class="word"></div>');
+            this.word = word;
+        };
+    
+    WordView.prototype = {
         
-            deEmphasize : function (e) {
-                var letter = $(e.target);
+        addLetter : function (letter) {
+            var letterView = new LetterView(letter);
 
-                letter.addClass('emphasize');
-                letter.css('font-size', '3.2rem');
-            },
+            this.$word.append(letterView.$el);
+            letterView.render();
+        },
         
-            emphasize : function (e) {
-                var letter = $(e.target);
-                
-                letter.removeClass('emphasize');
-                letter.css('font-size', '5rem');
-            },
+        addLetters : function () {
+            var i;
+            
+            for (i = 0; i < this.word.length; i += 1) {
+                this.addLetter(this.word[i]);
+            }
+        },
+        
+        addProgressButton : function () {
+            this.$progressButton = $('<button>></button>');
+            this.$el.append(this.$progressButton);  
+        },
 
-            hide : function () {
-                this.$el.css({
-                    display: 'none',
-                    opacity : 0
-                });
-            },
+        hide : function () {
+            this.$el.css({
+                display: 'none',
+                opacity : 0
+            });
+        },
+        
+        observeViewEvents : function () {
+            this.$progressButton.on('click', _.bind(this.wordComplete, this)); 
+        },
 
-            initialize : function () {
-                _.bindAll(this, 'render');
-                this.render();
-            },
+        wordComplete : function (e) {
+            e.stopPropagation();
+            this.hide();
+            this.$el.trigger('wordComplete');
+        },
 
-            progress : function () {
-                this.hide();
-                this.trigger('progress');
-            },
+        render : function () {
+            this.$word = $('<h2></h2>');
+            this.$el.append(this.$word);
+            this.addLetters();
+            this.addProgressButton();
+            this.observeViewEvents();
+        },
 
-            render : function () {
-                var template = _.template('<h2><%= word %></h2><button>&gt;</button>'),
-                    word = this.splitWord(this.model.get('word'));
-
-                this.$el.html(template({
-                    word : word
-                }));
-
-                return this;
-            },
-
-            show : function () {
-                this.$el.css({
-                    display: 'block',
-                    opacity : 1
-                });
-            },
-
-            splitWord : function (word) {
-
-                return '<span><span>' + word.join('</span></span><span><span>') + '</span></span>';
-            },
-
-            tagName : 'div'
-        });
+        show : function () {
+            this.$el.css({
+                display: 'block',
+                opacity : 1
+            });
+        }
+    };
 
     return WordView;
 });
