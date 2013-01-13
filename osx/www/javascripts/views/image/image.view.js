@@ -6,23 +6,12 @@ define(function () {
         };
     
     ImageView.prototype = {
-
-        events :  {
-            click : 'progress'
-        },
-
-        hide : function () {
-            this.$el.css({
-                display : 'none'
-            });
-        },
         
         observeViewEvents : function () {
             this.$el.bind('click', _.bind(this.imageComplete, this));
         },
 
         imageComplete : function () {
-            this.hide();
             this.$el.trigger('imageComplete');
         },
 
@@ -32,12 +21,6 @@ define(function () {
             this.$el.html(template({
                 image : this.image
             }));
-        },
-
-        show : function () {
-            this.$el.css({
-                display : 'block'
-            });
         }
     };
 

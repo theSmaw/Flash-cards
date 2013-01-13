@@ -3,6 +3,7 @@ define([
 ], function (LetterView) {
     var WordView = function (word) {
             this.$el = $('<div class="word"></div>');
+            this.letterViews = [];
             this.word = word;
         };
     
@@ -11,6 +12,7 @@ define([
         addLetter : function (letter) {
             var letterView = new LetterView(letter);
 
+            this.letterViews.push(letterView);
             this.$word.append(letterView.$el);
             letterView.render();
         },
@@ -24,15 +26,25 @@ define([
         },
         
         addProgressButton : function () {
-            this.$progressButton = $('<button>></button>');
+            this.$progressButton = $('<button class="fade">></button>');
             this.$el.append(this.$progressButton);  
         },
 
         hide : function () {
-            this.$el.css({
-                display: 'none',
-                opacity : 0
+            var el = this.$el,
+                progressButton = this.$progressButton;
+                
+            for (i = 0; i < this.letterViews.length; i += 1) {
+                this.letterViews[i].hide();
+            }
+            this.$progressButton.css({
+                opacity: 0
             });
+            
+            setTimeout(function () {
+                el.css('display', 'none');
+                progressButton.css('display', 'none');
+            }, 1000);
         },
         
         observeViewEvents : function () {
@@ -55,8 +67,15 @@ define([
 
         show : function () {
             this.$el.css({
-                display: 'block',
+                display: 'inline-block',
                 opacity : 1
+            });
+            for (i = 0; i < this.letterViews.length; i += 1) {
+                this.letterViews[i].show();
+            }
+            this.$progressButton.css({
+                display: 'block',
+                opacity: 1
             });
         }
     };

@@ -3,7 +3,7 @@ define([
     'views/word/word.view'
 ], function (ImageView, WordView) {
     var CardView = function (card) {
-            this.$el = $('<li class="card"></li>');
+            this.$el = $('<li class="card fade"></li>');
             this.image = card.image;
             this.word = card.word;
             _.bindAll(this);
@@ -28,9 +28,18 @@ define([
         },
 
         hide : function () {
+            var el = this.$el;
+            
             this.$el.css({
-                display : 'none'
+                opacity: 0
             });
+            
+            setTimeout(function () {
+                el.css({
+                    display: 'none',
+                    'z-index': 1
+                });
+            }, 1000);
         },
 
         observeSubViewEvents : function () {
@@ -49,16 +58,23 @@ define([
         },
 
         show : function () {
-            this.imageView.show();
+            var el = this.$el;
+            
             this.wordView.show();
             this.$el.css({
-                display : 'block'
+                display: 'block',
+                opacity: 1
             });
+            
+            setTimeout(function () {
+                el.css({
+                    'z-index': 2
+                });
+            }, 1000);
         },
 
         showImage : function () {
             this.wordView.hide();
-            this.imageView.show();
         }
     };
 

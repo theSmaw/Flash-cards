@@ -1,6 +1,6 @@
 define(function () {
     var LetterView = function (letter) {
-            this.$el = $('<span class="letter"></span>');
+            this.$el = $('<span class="fade letter"></span>');
             this.letter = letter;
             this.observeViewEvents();
         };
@@ -12,6 +12,12 @@ define(function () {
 
             letter.addClass('emphasize');
             letter.css('font-size', '3.2rem');
+        },
+        
+        hide : function () {
+            this.$el.css({
+                opacity : 0
+            });
         },
 
         emphasize : function (e) {
@@ -32,7 +38,6 @@ define(function () {
 
         show : function () {
             this.$el.css({
-                display: 'block',
                 opacity : 1
             });
         }

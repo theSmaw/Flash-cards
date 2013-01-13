@@ -7,12 +7,12 @@
 .word button {
   background: rgba(255,255,255,0.8);
   border: none;
-  bottom: 1rem;
   font-size: 2rem;
   margin: 0 0.15rem 0 0;
   padding: 0.4rem 0;
   position: absolute;
   right: 1rem;
+  top: 1rem;
   width: 2rem;
 }
 
